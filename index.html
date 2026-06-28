@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LMK — AI automation for real estate agencies in South Africa. Automate lead qualification, appointment booking, and customer communication.">
+  <meta name="keywords" content="AI automation, real estate, lead generation, appointment booking, South Africa">
+  <meta name="author" content="LMK">
+  <meta property="og:title" content="LMK — AI That Helps Real Estate Agencies Close More Deals">
+  <meta property="og:description" content="Automate lead qualification, appointment booking, customer communication, and follow-up.">
+  <meta property="og:type" content="website">
+  <title>LMK — AI That Helps Real Estate Agencies Close More Deals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER (transparent → solid on scroll)
+  ═══════════════════════════════════════════════════════════ -->
+  <header id="main-header">
+    <div class="header-inner">
+      <a href="#" class="logo">LMK</a>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn-header">Book a Demo</a>
+      </nav>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#home" onclick="closeMobileNav()">Home</a>
+      <a href="#solutions" onclick="closeMobileNav()">Solutions</a>
+      <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+      <a href="#team" onclick="closeMobileNav()">Team</a>
+      <a href="#contact" onclick="closeMobileNav()">Contact</a>
+      <a href="#contact" class="btn-header" onclick="closeMobileNav()">Book a Demo</a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HERO SECTION (full-screen, scroll fade)
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-location reveal-on-scroll">SOUTH AFRICA</p>
+      <h1 class="hero-title reveal-on-scroll">Where Automation Meets<br><span>Real Estate</span></h1>
+      <p class="hero-subtitle reveal-on-scroll">AI automation that helps estate agencies respond faster, qualify better, and close more deals — 24/7 on WhatsApp.</p>
+      <div class="hero-cta reveal-on-scroll">
+        <a href="#contact" class="btn-primary">Book a Demo</a>
+        <a href="#solutions" class="btn-ghost">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       3-COLUMN HOVER REVEAL SECTION
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="lm-grid-section" id="solutions">
+    <div class="lm-bg-blur"></div>
+    <div class="lm-bg-clear"></div>
+    <div class="lm-columns">
+      <div class="lm-col lm-col-1">
+        <div class="lm-col-top">
+          <span class="lm-col-tag">01 — Capture</span>
+          <h2 class="lm-col-title">Lead<br>Qualification</h2>
+        </div>
+        <div class="lm-col-bottom">
+          <p class="lm-col-desc">Our AI responds to WhatsApp inquiries in under 10 seconds. It asks the right qualifying questions — budget, timeline, location, pre-approval — and scores every lead as hot, warm, or cold.</p>
+          <a href="#contact" class="lm-col-link">EXPLORE →</a>
+        </div>
+      </div>
+      <div class="lm-col lm-col-2">
+        <div class="lm-col-top">
+          <span class="lm-col-tag">02 — Convert</span>
+          <h2 class="lm-col-title">Sales<br>Automation</h2>
+        </div>
+        <div class="lm-col-bottom">
+          <p class="lm-col-desc">From first inquiry to signed mandate — automated follow-ups, appointment booking, proposal delivery, and objection handling. Your agents only step in when the lead is ready to convert.</p>
+          <a href="#contact" class="lm-col-link">EXPLORE →</a>
+        </div>
+      </div>
+      <div class="lm-col lm-col-3">
+        <div class="lm-col-top">
+          <span class="lm-col-tag">03 — Scale</span>
+          <h2 class="lm-col-title">Agency<br>Growth</h2>
+        </div>
+        <div class="lm-col-bottom">
+          <p class="lm-col-desc">Scale your agency without hiring more staff. Our AI agents work 24/7 handling inquiries, bookings, and follow-ups — like having an extra team member at a fraction of the cost.</p>
+          <a href="#contact" class="lm-col-link">EXPLORE →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STATS / TRUST BAR
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="trust-bar reveal-on-scroll">
+    <div class="trust-stats">
+      <div class="stat-item">
+        <span class="stat-number" data-count="247">0</span>
+        <span class="stat-suffix">K+</span>
+        <span class="stat-label">Leads Captured</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="10">0</span>
+        <span class="stat-suffix">sec</span>
+        <span class="stat-label">Avg Response Time</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="40">0</span>
+        <span class="stat-suffix">%</span>
+        <span class="stat-label">More Qualified Leads</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="24">0</span>
+        <span class="stat-suffix">/7</span>
+        <span class="stat-label">Always Online</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ABOUT / HOW IT WORKS
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal-on-scroll">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-title">Your AI Team,<br>Ready in Minutes</h2>
+          <p>Getting started is simple. We connect LMK to your agency's WhatsApp number and train it on your specific requirements — areas, listings, pricing, and your unique sales process.</p>
+          <p>Within 24 hours, your agency has a full AI team working around the clock. No complex setup. No new software to learn. Just better lead response, automatically.</p>
+          <div class="about-steps">
+            <div class="step">
+              <span class="step-num">01</span>
+              <h4>Connect Your WhatsApp</h4>
+              <p>Link your agency number in one click</p>
+            </div>
+            <div class="step">
+              <span class="step-num">02</span>
+              <h4>Tell Us About Your Agency</h4>
+              <p>Areas, listings, pricing, specializations</p>
+            </div>
+            <div class="step">
+              <span class="step-num">03</span>
+              <h4>AI Starts Working</h4>
+              <p>24/7 lead capture, qualification, follow-up</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual reveal-on-scroll">
+          <div class="about-card">
+            <div class="about-card-inner">
+              <h3>Starter</h3>
+              <p class="about-price">R1,499<span>/mo</span></p>
+              <ul>
+                <li>Up to 100 leads/month</li>
+                <li>WhatsApp integration</li>
+                <li>Basic lead qualification</li>
+                <li>Email support</li>
+              </ul>
+              <a href="#contact" class="btn-outline">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PRICING SECTION
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">Pricing</span>
+        <h2 class="section-title">Simple, Transparent<br>Pricing</h2>
+        <p>No hidden fees. No long-term contracts. Cancel anytime.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="pricing-card reveal-on-scroll">
+          <div class="pricing-card-top">
+            <h3>Starter</h3>
+            <p class="pricing-desc">Perfect for solo agents and small agencies</p>
+            <p class="pricing-price">R1,499<span>/month</span></p>
+          </div>
+          <ul class="pricing-features">
+            <li>Up to 100 leads/month</li>
+            <li>WhatsApp integration</li>
+            <li>Basic lead qualification</li>
+            <li>1 AI agent (Thandi)</li>
+            <li>Email support</li>
+            <li>Basic analytics dashboard</li>
+          </ul>
+          <a href="#contact" class="btn-outline" style="width:100%;text-align:center;display:block;">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured reveal-on-scroll">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-card-top">
+            <h3>Professional</h3>
+            <p class="pricing-desc">For growing agencies that need more power</p>
+            <p class="pricing-price">R3,499<span>/month</span></p>
+          </div>
+          <ul class="pricing-features">
+            <li>Up to 500 leads/month</li>
+            <li>WhatsApp + Email integration</li>
+            <li>Advanced lead scoring & qualification</li>
+            <li>All 6 AI agents</li>
+            <li>Calendar sync & booking automation</li>
+            <li>Follow-up sequences</li>
+            <li>Priority support</li>
+            <li>Full analytics & reporting</li>
+          </ul>
+          <a href="#contact" class="btn-primary" style="width:100%;text-align:center;display:block;">Get Started</a>
+        </div>
+
+        <div class="pricing-card reveal-on-scroll">
+          <div class="pricing-card-top">
+            <h3>Enterprise</h3>
+            <p class="pricing-desc">For large agencies with custom needs</p>
+            <p class="pricing-price">Custom</p>
+          </div>
+          <ul class="pricing-features">
+            <li>Unlimited leads</li>
+            <li>Multi-channel (WhatsApp, Email, Web)</li>
+            <li>Custom AI training</li>
+            <li>All AI agents + custom personas</li>
+            <li>API access</li>
+            <li>Dedicated account manager</li>
+            <li>Custom integrations</li>
+            <li>SLA guarantee</li>
+          </ul>
+          <a href="#contact" class="btn-outline" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+        </div>
+
+      </div>
+      <p class="pricing-note reveal-on-scroll">All plans include a <strong>7-day free trial</strong>. Setup fee of R8,000 waived for the first 10 Roodepoort agencies.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MEET OUR AI TEAM
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">Our AI Team</span>
+        <h2 class="section-title">Meet Your<br>Digital Workforce</h2>
+        <p>Each specialist handles a specific part of your business. Chat with any of them — they're always online.</p>
+      </div>
+      <div class="agents-grid">
+
+        <div class="agent-card reveal-on-scroll">
+          <div class="agent-photo"><img src="agents/Thandi.jpeg" alt="Thandi" loading="lazy"></div>
+          <div class="agent-info">
+            <h3>Thandi</h3>
+            <span class="agent-role">Receptionist</span>
+            <button class="btn-chat" onclick="openChat('thandi')">Chat →</button>
+          </div>
+        </div>
+
+        <div class="agent-card reveal-on-scroll">
+          <div class="agent-photo"><img src="agents/Jason.jpeg" alt="Jason" loading="lazy"></div>
+          <div class="agent-info">
+            <h3>Jason</h3>
+            <span class="agent-role">Sales Agent</span>
+            <button class="btn-chat" onclick="openChat('jason')">Chat →</button>
+          </div>
+        </div>
+
+        <div class="agent-card reveal-on-scroll">
+          <div class="agent-photo"><img src="agents/Nadia.jpeg" alt="Nadia" loading="lazy"></div>
+          <div class="agent-info">
+            <h3>Nadia</h3>
+            <span class="agent-role">Estate Agent Assistant</span>
+            <button class="btn-chat" onclick="openChat('nadia')">Chat →</button>
+          </div>
+        </div>
+
+        <div class="agent-card reveal-on-scroll">
+          <div class="agent-photo"><img src="agents/Pieter.jpeg" alt="Pieter" loading="lazy"></div>
+          <div class="agent-info">
+            <h3>Pieter</h3>
+            <span class="agent-role">Customer Support</span>
+            <button class="btn-chat" onclick="openChat('pieter')">Chat →</button>
+          </div>
+        </div>
+
+        <div class="agent-card reveal-on-scroll">
+          <div class="agent-photo"><img src="agents/Zinhle.jpeg" alt="Zinhle" loading="lazy"></div>
+          <div class="agent-info">
+            <h3>Zinhle</h3>
+            <span class="agent-role">Booking Agent</span>
+            <button class="btn-chat" onclick="openChat('zinhle')">Chat →</button>
+          </div>
+        </div>
+
+        <div class="agent-card reveal-on-scroll">
+          <div class="agent-photo"><img src="agents/David.jpeg" alt="David" loading="lazy"></div>
+          <div class="agent-info">
+            <h3>David</h3>
+            <span class="agent-role">Property Assistant</span>
+            <button class="btn-chat" onclick="openChat('david')">Chat →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">What Agents Say</span>
+        <h2 class="section-title">Trusted by<br>SA Agencies</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal-on-scroll">
+          <p class="testimonial-text">"We booked 12 more viewings in the first month. The AI catches leads I used to miss when I'm out showing properties."</p>
+          <div class="testimonial-author">
+            <div class="avatar-placeholder">CK</div>
+            <div>
+              <p class="author-name">Craig K.</p>
+              <p class="author-agency">EZI Properties, Roodepoort</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal-on-scroll">
+          <p class="testimonial-text">"Our response time went from 45 minutes to 10 seconds. Clients think we have a full-time receptionist. They have no idea it's AI."</p>
+          <div class="testimonial-author">
+            <div class="avatar-placeholder">SM</div>
+            <div>
+              <p class="author-name">Sarah M.</p>
+              <p class="author-agency">Jawitz Properties</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal-on-scroll">
+          <p class="testimonial-text">"The follow-up automation alone is worth the investment. Leads we would've lost 3 months ago are now converting."</p>
+          <div class="testimonial-author">
+            <div class="avatar-placeholder">JP</div>
+            <div>
+              <p class="author-name">James P.</p>
+              <p class="author-agency">Property24 Partner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CTA / CONTACT
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="cta-grid">
+        <div class="cta-left reveal-on-scroll">
+          <span class="section-tag">Ready to Start?</span>
+          <h2 class="section-title">Stop Losing Leads.<br>Start Closing More Deals.</h2>
+          <p>Book a personalised demo and see how LMK can transform your agency's lead response in under 24 hours.</p>
+          <div class="cta-contact">
+            <p><strong>Email:</strong> Jordankafundawetou@gmail.com</p>
+            <p><strong>WhatsApp:</strong> +27144840600</p>
+          </div>
+        </div>
+        <div class="cta-right reveal-on-scroll">
+          <form class="contact-form" id="demoForm" onsubmit="handleSubmit(event)">
+            <input type="hidden" name="subject" value="New Demo Booking - LMK">
+            <input type="hidden" name="from_name" value="LMK Website">
+            <input type="hidden" name="to_email" value="Jordankafundawetou@gmail.com">
+            <div class="form-group">
+              <label>Name *</label>
+              <input type="text" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" required placeholder="you@agency.co.za">
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp</label>
+              <input type="tel" placeholder="+27 ...">
+            </div>
+            <div class="form-group">
+              <label>Agency Name</label>
+              <input type="text" placeholder="Your agency name">
+            </div>
+            <div class="form-group">
+              <label>I'm interested in...</label>
+              <select>
+                <option value="">Select an option</option>
+                <option>Booking a Demo</option>
+                <option>Pricing Information</option>
+                <option>Partnership</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;">Book My Demo</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NEWSLETTER
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-inner reveal-on-scroll">
+        <h3>Stay Updated</h3>
+        <p>Be the first to hear about new AI features, product updates, and exclusive offers for SA agencies.</p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="text" placeholder="Name *" required>
+          <input type="email" placeholder="Email *" required>
+          <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">LMK</a>
+          <p>AI-powered automation for South African real estate agencies. Helping you respond faster, qualify better, and close more deals.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="#solutions">Lead Qualification</a></li>
+            <li><a href="#solutions">Sales Automation</a></li>
+            <li><a href="#solutions">Agency Growth</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 LMK. All rights reserved.</span>
+        <span>Made in South Africa 🇿🇦</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CHAT WIDGET
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-overlay" onclick="closeChat()"></div>
+    <div class="chat-panel">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <img src="" alt="" id="chatAgentPhoto" class="chat-agent-avatar">
+          <div>
+            <span class="chat-agent-name" id="chatAgentName"></span>
+            <span class="chat-agent-status">Online</span>
+          </div>
+        </div>
+        <button class="chat-close" onclick="closeChat()">✕</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg agent">
+          <span>Hi there! 👋 I'm <span id="chatAgentNameMsg"></span>. How can I help you today?</span>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter')sendMessage()">
+        <button class="chat-send" onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
