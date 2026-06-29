@@ -204,48 +204,39 @@ let currentAgent = null;
 let conversationHistory = [];
 
 function openChat(agentId) {
+  // Guard: make sure agent exists
+  if (!agents[agentId]) return;
+  
+  // Reset state
   currentAgent = agents[agentId];
-  if (!currentAgent) return;
+  conversationHistory = [];
 
-  document.getElementById('chatAgentPhoto').src = currentAgent.photo;
-  document.getElementById('chatAgentName').textContent = currentAgent.name;
-  document.getElementById('chatAgentNameMsg').textContent = currentAgent.name;
-
+  // Update UI
+  const photo = document.getElementById('chatAgentPhoto');
+  const name = document.getElementById('chatAgentName');
+  const nameMsg = document.getElementById('chatAgentNameMsg');
   const messagesContainer = document.getElementById('chatMessages');
-  messagesContainer.innerHTML = '<div class="chat-msg agent"><span>' + currentAgent.greeting + '</span></div>';
+  const widget = document.getElementById('chatWidget');
+  const input = document.getElementById('chatInput');
+
+  if (photo) photo.src = currentAgent.photo;
+  if (name) name.textContent = currentAgent.name;
+  if (nameMsg) nameMsg.textContent = currentAgent.name;
+  if (messagesContainer) {
+    messagesContainer.innerHTML = '<div class="chat-msg agent"><span>' + currentAgent.greeting + '</span></div>';
+  }
 
   conversationHistory = [{ role: 'agent', text: currentAgent.greeting }];
 
-  document.getElementById('chatWidget').classList.add('open');
-  document.getElementById('chatInput').focus();
+  if (widget) widget.classList.add('open');
+  if (input) input.focus();
+  
   trackAnalytics('chat_open', { agent: agentId });
 }
 
-// Prevent chat panel clicks from bubbling to overlay
-(function() {
-  const panel = document.querySelector('.chat-panel');
-  if (panel) {
-    panel.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  const overlay = document.querySelector('.chat-overlay');
-  if (overlay) {
-    overlay.addEventListener('click', function() {
-      closeChat();
-    });
-  }
-  const closeBtn = document.querySelector('.chat-close');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-      closeChat();
-    });
-  }
-})();
-
 function closeChat() {
   const widget = document.getElementById('chatWidget');
-  widget.classList.remove('open');
+  if (widget) widget.classList.remove('open');
   currentAgent = null;
   conversationHistory = [];
   const messagesContainer = document.getElementById('chatMessages');
@@ -253,6 +244,25 @@ function closeChat() {
     messagesContainer.innerHTML = "";
   }
 }
+
+// Setup chat event listeners
+document.addEventListener('click', function(e) {
+  // Overlay click → close
+  if (e.target && e.target.classList && e.target.classList.contains('chat-overlay')) {
+    closeChat();
+  }
+  // Close button click → close
+  if (e.target && e.target.closest && e.target.closest('.chat-close')) {
+    closeChat();
+  }
+});
+
+// Stop propagation on chat panel
+document.addEventListener('click', function(e) {
+  if (e.target && e.target.closest && e.target.closest('.chat-panel')) {
+    e.stopPropagation();
+  }
+});
 
 function sendMessage() {
   const input = document.getElementById('chatInput');
@@ -279,10 +289,9 @@ function sendMessage() {
 
   // Try keyword match first (instant)
   const keywordResponse = getResponse(text, currentAgent);
-  const isDefaultFallback = keywordResponse === currentAgent.responses.default;
   
-  if (!isDefaultFallback) {
-    // Instant response from keyword matching
+  if (keywordResponse !== null) {
+    // Keyword matched — instant response
     setTimeout(() => {
       typingMsg.remove();
       const agentMsg = document.createElement('div');
@@ -293,7 +302,8 @@ function sendMessage() {
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }, 600 + Math.random() * 400);
   } else {
-    // Use LLM for complex/unmatched questions
+    // No keyword match — use LLM fallback
+    const fallbackText = currentAgent.responses.default;
     fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -309,7 +319,7 @@ function sendMessage() {
         typingMsg.remove();
         const agentMsg = document.createElement('div');
         agentMsg.className = 'chat-msg agent';
-        const response = data.response || keywordResponse;
+        const response = data.response || fallbackText;
         agentMsg.innerHTML = '<span>' + response + '</span>';
         messagesContainer.appendChild(agentMsg);
         conversationHistory.push({ role: 'agent', text: response });
@@ -321,9 +331,9 @@ function sendMessage() {
         typingMsg.remove();
         const agentMsg = document.createElement('div');
         agentMsg.className = 'chat-msg agent';
-        agentMsg.innerHTML = '<span>' + keywordResponse + '</span>';
+        agentMsg.innerHTML = '<span>' + fallbackText + '</span>';
         messagesContainer.appendChild(agentMsg);
-        conversationHistory.push({ role: 'agent', text: keywordResponse });
+        conversationHistory.push({ role: 'agent', text: fallbackText });
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
       }, 800);
     });
@@ -384,18 +394,8 @@ function getResponse(input, agent) {
     return r.small_talk || agent.greeting;
   }
 
-  // Context-aware fallback based on conversation history
-  if (conversationHistory.length > 2) {
-    const lastTopic = (conversationHistory[conversationHistory.length - 2] && conversationHistory[conversationHistory.length - 2].text) || '';
-    if (lastTopic.includes('pricing') || lastTopic.includes('R1,499') || lastTopic.includes('R3,499')) {
-      return "Would you like me to help you pick the right plan? Or is there something specific about the pricing you'd like me to clarify?";
-    }
-    if (lastTopic.includes('WhatsApp')) {
-      return "Anything else about how the WhatsApp integration works? I can also connect you with Zinhle for booking questions or Jason for ROI questions!";
-    }
-  }
-
-  return r.default;
+  // No keyword match — return null to indicate LLM should be used
+  return null;
 }
 
 // ─── Form handlers ────────────────────────────────────────────
