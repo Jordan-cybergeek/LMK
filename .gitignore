@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
-backend/analytics.db
 .DS_Store
 *.log
+lmk-deploy.zip
+backend/analytics.db
