@@ -221,10 +221,37 @@ function openChat(agentId) {
   trackAnalytics('chat_open', { agent: agentId });
 }
 
+// Prevent chat panel clicks from bubbling to overlay
+(function() {
+  const panel = document.querySelector('.chat-panel');
+  if (panel) {
+    panel.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+  const overlay = document.querySelector('.chat-overlay');
+  if (overlay) {
+    overlay.addEventListener('click', function() {
+      closeChat();
+    });
+  }
+  const closeBtn = document.querySelector('.chat-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      closeChat();
+    });
+  }
+})();
+
 function closeChat() {
-  document.getElementById('chatWidget').classList.remove('open');
+  const widget = document.getElementById('chatWidget');
+  widget.classList.remove('open');
   currentAgent = null;
   conversationHistory = [];
+  const messagesContainer = document.getElementById('chatMessages');
+  if (messagesContainer) {
+    messagesContainer.innerHTML = "";
+  }
 }
 
 function sendMessage() {
