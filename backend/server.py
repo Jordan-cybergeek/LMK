@@ -248,6 +248,10 @@ def dashboard():
 def serve_index():
     return send_from_directory("../", "index.html")
 
+@app.route("/dashboard")
+def serve_dashboard():
+    return send_from_directory("../", "dashboard.html")
+
 @app.route("/<path:path>")
 def serve_static(path):
     return send_from_directory("../", path)
